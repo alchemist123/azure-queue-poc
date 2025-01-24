@@ -13,10 +13,13 @@ class AzureQueueServices:
         except Exception as e:
             print(f"Error creating queue: {e}")
 
-    def sendPayload(self,payload:str):
+    def sendPayload(self, payload: str):
         try:
-            self.queue_client.send_message(payload)
-            print(f"Payload sent: {payload}")
+            if len(payload.encode('utf-8')) < 64 * 1024:
+                self.queue_client.send_message(payload)
+                print(f"Payload sent: {payload}")
+            else:
+                print("Error: Payload size exceeds 64 KB limit.")
         except Exception as e:
             print(f"Error sending payload: {e}")
     
