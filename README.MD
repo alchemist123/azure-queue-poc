@@ -1,4 +1,4 @@
-# Azure Queue Service Example
+# Azure Queue Service POC
 
 This repository contains an example of how to use Azure Queue Storage service in a Python application. The example demonstrates how to create a queue, send a message to the queue, receive the message from the queue, and delete the queue.
 
